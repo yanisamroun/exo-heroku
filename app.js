@@ -11,6 +11,10 @@ app.set('views', path.join(__dirname,'views'));
 // 2. Connecter twig à express.js
 app.set('view engine', 'twig');
 
+// Rendre automatiquement disponible en URL tout fichier
+// dans le dossier public
+app.use(express.static('public'))
+
 // Définir le port dans une variable
 const port = 4400;
 
