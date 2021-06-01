@@ -31,6 +31,10 @@ app.get('/blog/:id', (req,res) => {
     res.send(req.params.id)
 })
 
+app.get('/services', (req,res) => {
+    res.render('services')
+})
+
 app.get('/contact', (req,res) => {
     res.render('contact', {mail: 'jean-baptiste@pop.eu.com'})
 })
