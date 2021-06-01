@@ -27,6 +27,10 @@ app.get('/blog/:id', (req,res) => {
     res.send(req.params.id)
 })
 
+app.get('/contact', (req,res) => {
+    res.render('contact', {mail: 'jean-baptiste@pop.eu.com'})
+})
+
 // Lance le serveur
 app.listen(port, () => {
     console.log(`App running on http://localhost:${port}`);
