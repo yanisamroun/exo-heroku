@@ -1,6 +1,7 @@
 // Importer express
 const express = require('express');
 const path = require('path');
+const axios = require('axios');
 
 // Initialiser l'application
 const app = express();
@@ -24,12 +25,38 @@ app.get('/', (req, res) => {
 })
 
 app.get('/blog', (req,res) => {
-    res.send('Mes articles');
+    res.render('blog');
 })
 
 app.get('/blog/:id', (req,res) => {
-    res.send(req.params.id)
+    res.render('article')
 })
+
+// Ex: /utilisateurs/7
+app.get('/utilisateurs/:bachi', (req,res) => {
+
+    // Vient récupérer tout ce qu'il y a après /utilisateurs/
+    // Et ça va le mettre dans :bachi
+    // Et ça, ça le transvide dans req.params.bachi
+    // Dans mon ex, id -> 7
+   const id = req.params.bachi;
+
+   // Récupérer les données de l'API JSON placeholder
+   // POur un utilisateur précis
+   // Ici, celui dont l'id correspond à req.params.bachi
+   axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
+   .then(resAxios => {
+       console.log(resAxios.data);
+
+       // Mes données de l'API que je reçois
+       // Je les envoie dans le template twig
+       // Avec un nom myUser qui permet de faire
+       // Dans mon template
+       // {{myUser.quelquechose}}
+       res.render('user', {myUser: resAxios.data});
+   })
+})
+
 
 app.get('/services', (req,res) => {
     res.render('services')
