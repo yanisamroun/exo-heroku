@@ -3,6 +3,10 @@
 {% block myBody %}
 <h1>Mes articles</h1>
 
+{% if nbPosts >= 20 %}
+ <p>Oulala, beaucoup trop de lecture pour mon cerveau</p>
+{% endif %}
+
 {% for articleOfTheDead in posts %}
    <h2>{{articleOfTheDead.title}}</h2>
 {% endfor %}

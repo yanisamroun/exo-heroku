@@ -28,7 +28,7 @@ app.get('/blog', (req,res) => {
     // Récupérer la liste des articles
     axios.get(`https://jsonplaceholder.typicode.com/posts`)
     .then(resAxios => {
-        res.render('blog', {posts: resAxios.data});
+        res.render('blog', {posts: resAxios.data, nbPosts: 25});
     })
 })
 
