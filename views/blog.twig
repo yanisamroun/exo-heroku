@@ -2,4 +2,9 @@
 
 {% block myBody %}
 <h1>Mes articles</h1>
+
+{% for articleOfTheDead in posts %}
+   <h2>{{articleOfTheDead.title}}</h2>
+{% endfor %}
+
 {% endblock %}

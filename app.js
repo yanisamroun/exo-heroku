@@ -25,11 +25,20 @@ app.get('/', (req, res) => {
 })
 
 app.get('/blog', (req,res) => {
-    res.render('blog');
+    // Récupérer la liste des articles
+    axios.get(`https://jsonplaceholder.typicode.com/posts`)
+    .then(resAxios => {
+        res.render('blog', {posts: resAxios.data});
+    })
 })
 
 app.get('/blog/:id', (req,res) => {
-    res.render('article')
+    const id = req.params.id;
+
+    axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+    .then(resAxios => {
+        res.render('article', {post: resAxios.data})
+    })
 })
 
 // Ex: /utilisateurs/7
