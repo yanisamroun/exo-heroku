@@ -17,7 +17,7 @@ app.set('view engine', 'twig');
 app.use(express.static('public'))
 
 // Définir le port dans une variable
-const PORT = 3000;
+const port = 3000;
 
 // Routing
 app.get('/', (req, res) => {
