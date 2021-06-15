@@ -21,7 +21,7 @@ const port = 4400;
 
 // Routing
 app.get('/', (req, res) => {
-    res.render('index', {bachi: "Mange tes morts"});
+    res.render('index', {bachi: "Mon titre"});
 })
 
 app.get('/blog', (req,res) => {
